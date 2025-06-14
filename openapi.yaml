@@ -1,0 +1,298 @@
+openapi: 3.1.0
+info:
+  title: oversoul
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /chat:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Chat
+      responses: {}
+      operationId: get-chat
+      description: ''
+    post:
+      summary: ''
+      operationId: post-chat
+      responses:
+        '200':
+          description: OK
+          content: {}
+      description: Create a chat session
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: model
+          description: Model name
+        - schema:
+            type: boolean
+          in: query
+          name: temporary
+          description: Enable temporary chat
+  '/chat/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Chat
+      responses: {}
+      operationId: get-chat-id
+      description: 'Get messages of chat session '
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+    post:
+      summary: ''
+      operationId: post-chat-id
+      responses:
+        '200':
+          description: OK
+        '409':
+          description: Conflict
+          content: {}
+      description: Send a message to a chat session
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: object
+              properties: {}
+        description: Message body
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: enable_think
+          description: Enable reasoning mode (if possible)
+        - schema:
+            type: string
+          in: query
+          name: web_search
+          description: Enable web search
+    delete:
+      summary: ''
+      operationId: delete-chat-id
+      responses:
+        '200':
+          description: OK
+      description: Delete a chat session permanently
+  '/message/{id}':
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Chat
+      responses:
+        '200':
+          description: OK
+          content:
+            text/event-stream:
+              schema:
+                type: object
+                properties: {}
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-message
+      description: Get whole message
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: stream
+          description: Enable stream mode
+      requestBody:
+        content: {}
+        description: ''
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+  /memory:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Memory
+      responses: {}
+      operationId: get-memory
+      description: List all memories that models has hold
+    post:
+      summary: ''
+      operationId: post-memory
+      responses:
+        '200':
+          description: OK
+      description: Create a memory
+    delete:
+      summary: ''
+      operationId: delete-memory
+      responses:
+        '200':
+          description: OK
+      description: Delete all memories
+  '/memory/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      responses: {}
+      operationId: get-memory-id
+      description: Get content of a memory by id
+      tags:
+        - Memory
+    put:
+      summary: ''
+      operationId: put-memory-id
+      responses:
+        '200':
+          description: OK
+      description: Update the content of a memory by id
+    delete:
+      summary: ''
+      operationId: delete-memory-id
+      responses:
+        '200':
+          description: OK
+      description: Delete the memory
+  /model:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Model
+      responses: {}
+      operationId: get-model
+      description: List all available models
+  '/chat/{id}/rename':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-chat-id-rename
+      responses:
+        '200':
+          description: OK
+      description: Rename the chat session
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: object
+              properties: {}
+  /tools:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToolDescribe'
+                  x-stoplight:
+                    id: z2m6het0vg5ej
+      operationId: get-tools
+      description: List all tools that user has installed
+    post:
+      summary: ''
+      operationId: post-tools
+      responses:
+        '200':
+          description: OK
+      description: Install a new tool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                describe:
+                  $ref: '#/components/schemas/ToolDescribe'
+                  x-stoplight:
+                    id: dhdpscxztcl1w
+                language:
+                  type: string
+                  x-stoplight:
+                    id: cn0jnimqwer5o
+                  default: javascript
+                code:
+                  type: string
+                  x-stoplight:
+                    id: 9lmg520yv9qe7
+  '/tool/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToolDescribe'
+      operationId: get-tool-id
+      description: Get information of a tool
+    delete:
+      summary: ''
+      operationId: delete-tool-id
+      responses:
+        '200':
+          description: OK
+      description: Delete a tool
+    post:
+      summary: ''
+      operationId: post-tool-id
+      responses:
+        '200':
+          description: OK
+      description: Call this tool
+components:
+  schemas:
+    ToolDescribe:
+      title: ToolDescribe
+      x-stoplight:
+        id: vtfxk8x8462np
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          x-stoplight:
+            id: 8xovwim92igt5
+        description:
+          type: string
+          x-stoplight:
+            id: 0lu2uaqna9uov
+        parameters:
+          type: object
+          x-stoplight:
+            id: fatq2t3mu6x70
