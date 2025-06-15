@@ -1,0 +1,4 @@
+/target
+/lora/.ropeproject
+/lora/.venv
+.DS_STORE
