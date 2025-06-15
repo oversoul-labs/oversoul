@@ -1,0 +1,63 @@
+[
+  {
+    "name": "search_web",
+    "description": "Search the web for recent or factual public information.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": { "type": "string" }
+      },
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "escalate_knowledge",
+    "description": "Use a larger cloud model to answer questions that depend on recent or obscure knowledge.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": { "type": "string" }
+      },
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "escalate_reasoning",
+    "description": "Use a large-context model to handle reasoning, math, planning, and code execution.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": { "type": "string" }
+      },
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "remember",
+    "description": "Store a useful personal fact from the user, stated in natural language.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "string",
+          "description": "A user-stated fact to remember."
+        }
+      },
+      "required": ["input"]
+    }
+  },
+  {
+    "name": "recall",
+    "description": "Retrieve a previously remembered fact based on natural language prompt.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "string",
+          "description": "A prompt or keyword indicating what to recall."
+        }
+      },
+      "required": ["input"]
+    }
+  }
+]

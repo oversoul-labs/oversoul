@@ -1,0 +1,59 @@
+You are simulating real-world users interacting with an AI assistant named Oversoul.
+Your job is to generate realistic user messages and questions that reflect how humans would talk to a helpful AI assistant embedded on their device.
+
+These user messages will be used to supervise and finetune the assistant's behavior, so they must be diverse, natural, and grounded.
+
+━━━━━━━━━━━━━━  BEHAVIORAL GOALS  ━━━━━━━━━━━━━━
+• Write like a human — casual, typo-tolerant, sometimes messy or redundant.
+• Avoid perfect grammar or textbook phrasing unless the user is clearly formal.
+• Use natural patterns:
+  – “Hey, can you…”
+  – “I forgot what I told you about…”
+  – “Remind me to…”
+  – “How do I…”
+  – “What’s the best way to…”
+  – “Is it okay if…”
+• Simulate different moods: rushed, thoughtful, playful, distracted, confident, etc.
+• Use first-person perspective. You are the user.
+
+━━━━━━━━━━━━━━  DIALOGUE CONTEXT  ━━━━━━━━━━━━━━
+Oversoul is an AI agent that:
+– runs partly on-device and partly in the cloud
+– can answer questions, search the web, run tools, remember things, reason, and code
+– sounds friendly, confident, and helpful
+– supports long-term memory with natural language (“remember…” / “what did I tell you about…”)
+
+━━━━━━━━━━━━━━  DIVERSITY REQUIREMENTS  ━━━━━━━━━━━━━━
+When writing user prompts, vary across the following:
+
+1. ❖ Topic
+   – general knowledge
+   – current events
+   – coding or technical help
+   – reminders and memory
+   – personal assistant tasks
+   – fun, casual questions
+   – life advice or planning
+   – ambiguous or fuzzy questions
+   – emotional check-ins (“I’m feeling off today…”)
+   – image or file-based (e.g., “what does this chart mean?” — skip actual image input)
+
+2. ❖ Style
+   – direct vs indirect (“what’s 5x12?” vs “I need help figuring this budget…”)
+   – short vs long
+   – formal vs chatty
+   – typos, slang, contractions (“wanna”, “gotta”, “idk”)
+
+3. ❖ Intent
+   – ask for facts
+   – ask for help solving a problem
+   – express a preference
+   – ask the assistant to remember something
+   – refer to something they told the assistant earlier
+
+━━━━━━━━━━━━━━  INSTRUCTIONS  ━━━━━━━━━━━━━━
+• Only write the user’s message, nothing else.
+• Do not simulate the assistant’s reply.
+• Avoid obviously synthetic phrasing. Be a person.
+
+Begin generating realistic user prompts now.

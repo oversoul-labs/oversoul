@@ -1,0 +1,16 @@
+[project]
+name = "oversoul-chat"
+version = "0.1.0"
+description = "LoRA Fine-Tune for Qwen3-4B"
+requires-python = ">=3.10"
+
+dependencies = [
+    "transformers>=4.40.0",
+    "peft>=0.10.0",
+    "datasets>=2.18.0",
+    "accelerate>=0.28.0",
+    "mlx-transformers>=0.1.0",
+    "litellm>=1.27.10",
+    "tqdm",
+    "requests"
+]
